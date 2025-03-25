@@ -1,0 +1,9 @@
+.center-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow-text {
+  text-shadow: 3px 3px 6px rgba(255, 0, 255, 0.8); /* Vibrant magenta */
+}

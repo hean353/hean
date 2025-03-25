@@ -1,0 +1,62 @@
+body {
+  background-color: #f8f9fa; /* Light background for a clean look */
+  font-family: Arial, sans-serif;
+}
+
+#spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Ensure spinner is on top */
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ffffff; /* White background for the content */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #007bff; /* Bootstrap primary color */
+  margin-bottom: 20px;
+}
+
+.cluster {
+  margin-bottom: 30px; /* Space between clusters */
+  border: 1px solid #dee2e6; /* Light border for clusters */
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f1f1f1; /* Light background for clusters */
+}
+
+.program-card {
+  border: 1px solid #ced4da; /* Light border for program cards */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px; /* Space between program cards */
+  background-color: #ffffff; /* White background for program cards */
+  transition: transform 0.2s; /* Smooth hover effect */
+}
+
+.program-card:hover {
+  transform: scale(1.02); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+@media (max-width: 768px) {
+  .program-card {
+    margin-bottom: 10px; /* Reduce space on smaller screens */
+  }
+}
+
+.cluster-header {
+  color: red;
+  padding: 10px;
+  background-color: black;
+  width: 100%;
+  border-radius: 1px solid green;
+}

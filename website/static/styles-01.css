@@ -1,0 +1,81 @@
+body {
+  background-color: #f8f9fa; /* Light background for a clean look */
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #ffffff; /* White background for the form */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+}
+
+h1 {
+  color: #007bff; /* Bootstrap primary color */
+  margin-bottom: 20px;
+}
+
+h1 + h1 {
+  margin-top: 30px; /* Space between sections */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form groups */
+}
+
+label {
+  font-weight: bold; /* Bold labels for better readability */
+}
+
+select {
+  width: 100%; /* Full width for select inputs */
+  padding: 10px; /* Padding for better touch targets */
+  border: 1px solid #ced4da; /* Bootstrap border color */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #f8f9fa; /* Light background for select */
+}
+
+input[type="number"] {
+  width: 100%; /* Full width for number inputs */
+  padding: 10px; /* Padding for better touch targets */
+  border: 1px solid #ced4da; /* Bootstrap border color */
+  border-radius: 4px; /* Rounded corners */
+  background-color: #f8f9fa; /* Light background for input */
+}
+
+button {
+  margin-top: 20px; /* Space above the button */
+  width: 100%; /* Full width for the button */
+}
+
+.cluster-points {
+  margin-top: 30px; /* Space above the cluster points section */
+}
+
+.subjects {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping of subjects */
+  justify-content: space-between; /* Space between items */
+}
+
+.subjects > div {
+  flex: 1 1 45%; /* Flex items to take up 45% of the width */
+  margin-bottom: 20px; /* Space below each subject group */
+}
+
+@media (max-width: 768px) {
+  .subjects > div {
+    flex: 1 1 100%; /* Full width on smaller screens */
+  }
+}
+
+#spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; /* Ensure spinner is on top */
+}

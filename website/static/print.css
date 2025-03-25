@@ -1,0 +1,16 @@
+/* print.css */
+@media print {
+  body {
+    font-size: 12pt;
+  }
+  /* Hide elements that you don't want to print */
+  .no-print {
+    display: none;
+  }
+  /* Add any additional styles for printing */
+}
+
+#wheat {
+  font-size: small;
+  color: orangered;
+}
