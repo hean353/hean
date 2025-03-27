@@ -1,5 +1,5 @@
 body {
-  background-color: #f8f9fa; /* Light background for a clean look */
+  background-color: #eaf3f6; /* Light background for a clean look */
   font-family: Arial, sans-serif;
 }
 
@@ -7,14 +7,14 @@ body {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px;
-  background-color: #ffffff; /* White background for the form */
+  background-color: #fff9e6; /* White background for the form */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   word-wrap: break-word;
 }
 
 h1 {
-  color: #007bff; /* Bootstrap primary color */
+  color: #5b92d4; /* Bootstrap primary color */
   margin-bottom: 20px;
 }
 
@@ -35,7 +35,7 @@ select {
   padding: 10px; /* Padding for better touch targets */
   border: 1px solid #ced4da; /* Bootstrap border color */
   border-radius: 4px; /* Rounded corners */
-  background-color: #f8f9fa; /* Light background for select */
+  background-color: #f0f4f8; /* Light background for select */
 }
 
 input[type="number"] {
@@ -43,12 +43,16 @@ input[type="number"] {
   padding: 10px; /* Padding for better touch targets */
   border: 1px solid #ced4da; /* Bootstrap border color */
   border-radius: 4px; /* Rounded corners */
-  background-color: #f8f9fa; /* Light background for input */
+  background-color: #f0f4f8; /* Light background for input */
 }
 
 button {
   margin-top: 20px; /* Space above the button */
   width: 100%; /* Full width for the button */
+}
+button:hover {
+  background-color: #ffccaa;
+
 }
 
 .cluster-points {
