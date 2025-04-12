@@ -1,0 +1,47 @@
+# Python-related files and directories
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Environment and configuration files
+.env
+*.config
+*.ini
+
+# Logs and debugging files
+*.log
+*.debug
+
+# Cache and temporary files
+*.cache/
+*.tmp
+*.temp
+
+# Unit test files
+.tox/
+.coverage
+.pytest_cache/
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Distribution and packaging
+*.egg
+*.egg-info/
+dist/
+build/
+*.wheel
+
+# System-specific files
+Thumbs.db
+.DS_Store

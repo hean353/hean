@@ -1,0 +1,91 @@
+{% extends "./base.html" %} {% block title %}Payment | Form{% endblock %} {%
+block links %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',
+  filename='spinner.css')}}"
+/>
+{% endblock %} {% block displaytext %} Click pay for pop-up menu{% endblock %}
+{% block content %}
+
+<div class="container m-2 shadow p-3 mb-5 bg-white rounded">
+  <form action="#" method="post" id="formWrapper">
+    <p class="form-group">
+      So you will be redirected to the payment page. <br />
+      Click pay if you accept
+    </p>
+    <button type="submit" class="btn btn-primary" id="submit-btn">Pay</button>
+  </form>
+
+  <div class="center-spinner">
+    <div
+      id="spinner"
+      class="spinner-border text-danger"
+      role="status"
+      style="display: none"
+    >
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block scripts %}
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  // paystack.js
+  document.addEventListener("DOMContentLoaded", function () {
+    const paymentForm = document.getElementById("formWrapper");
+    paymentForm.addEventListener("submit", payWithPaystack, false);
+
+    function payWithPaystack(e) {
+      e.preventDefault();
+      const email = "{{ email }}";
+      const ksceIndex = "{{ ksce_index }}";
+      const type = "{{ type }}";
+
+      const handler = PaystackPop.setup({
+        key: "pk_live_344f9379bed01b1d2e23bd65110f304dea16dd62",
+        email: email,
+        amount: 19900, // Amount in kobo (300 kobo = 3 KES)
+        //amount: 110,
+        currency: "KES", // Set currency to Kenyan Shilling
+        channels: ["mobile_money", "card"], // Specify available payment channels
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "KSCE Index Number",
+              variable_name: "ksce_index_number",
+              value: ksceIndex,
+            },
+          ],
+        },
+        callback: function (response) {
+          try {
+            const reference = response.reference; // this is the transaction code returned after a complete transaction
+            // Redirect to the verify-payment route with the reference
+            document.getElementById("spinner").style.display = "block";
+            const textContent = document.querySelector(".form-group");
+            textContent.innerHTML =
+              "Please wait ...Don't refresh or leave the webpage. This may take a few minutes...";
+            textContent.classList.add(".shadow-text");
+            document.getElementById("submit-btn").style.display = "none";
+            window.location.href = `/payments/verify-payment?reference=${reference}&email=${encodeURIComponent(
+              email
+            )}&ksceIndex=${encodeURIComponent(
+              ksceIndex
+            )}&type=${encodeURIComponent(type)}`;
+          } catch (error) {
+            console.error("Error during callback:", error);
+            alert("An error occurred. Please try again.");
+            document.getElementById("spinner").style.display = "none";
+          }
+        },
+        onClose: function () {
+          // Optional: You can handle the close event if needed
+        },
+      });
+      handler.openIframe();
+    }
+  });
+</script>
+{% endblock %}

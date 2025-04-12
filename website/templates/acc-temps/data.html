@@ -1,0 +1,78 @@
+{% extends "./base.html" %} {% block title %} KUCCPS | Programs {% endblock %}
+{% block links %}
+<link
+  rel="icon"
+  href="https://en.wikipedia.org/static/favicon/wikipedia.ico"
+  type="image/x-icon"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles-01.css') }}"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static',
+filename='print.css') }}"
+  media="print"
+/>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+{% endblock %} {% block displaytext %}These are the programs for
+<span id="wheat" style="color: orangered; font-size: 1em">{{ email }}</span>
+of
+<span id="wheat" style="color: orangered; font-size: 1em">{{index_no}}</span>
+{% endblock %} {% block ref %}
+<button onclick="printPage()" class="btn btn-secondary">
+  Print Document <i class="fa fa-print"></i>
+</button>
+<span class="navbar-brand mb-0 h1"
+  ><a
+    href="{{ url_for('routes.base')}}"
+    style="margin-left: 1rem"
+    style="text-decoration: none; color: deepskyblue"
+    >Back Home</a
+  ></span
+>
+{% endblock %} {% block content %}
+<div class="container mt-5" id="content">
+  <h1>Available Programs ({{ type }} courses)</h1>
+  <div id="dataDisplay">
+    {% for cluster in programmes %} {% if cluster.programme %}
+    <div class="cluster">
+      <h2 class="cluster-header">
+        {{ cluster.cluster_name }}: available {{ cluster.programme|length }}
+      </h2>
+      <div class="programs">
+        {% for program in cluster.programme %}
+        <div class="program-card">
+          <h3>{{ program.programme_name }}</h3>
+          <p><strong>Institution:</strong> {{ program.institution_name }}</p>
+          <p><strong>Program Code:</strong> {{ program.programme_code }}</p>
+          <p>
+            <strong>Cut-off Points:</strong> {{ program.cut_off_points if
+            program.cut_off_points else 'N/A' }}
+          </p>
+          <p>
+            <strong>Minimum Subjects:</strong>
+            {% if program.minimum_subject_requirements %} {% for key, val in
+            program.minimum_subject_requirements.items() %} {{ key }}: {{ val }}
+            {% if not loop.last %}, {% endif %} {% endfor %} {% else %} N/A {%
+            endif %}
+          </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+{% endblock %} {% block scripts %}
+
+<script type="text/javascript">
+  function printPage() {
+    window.print();
+  }
+</script>
+
+{% endblock %}

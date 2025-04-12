@@ -1,0 +1,85 @@
+{% extends "./base.html" %} {% block title %}Kuccps | Courses {% endblock %} {%
+block links %}
+<style>
+  .btn-table {
+    width: 100%;
+    max-width: 200px; /* Adjust the maximum width as needed */
+  }
+</style>
+
+{% endblock%} {% block displaytext %} Welcome to the Kuccps Programmes
+Generator{% endblock %} {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="card" style="width: 20rem; margin: 0 auto">
+      <img
+        src="{{ url_for('static', filename='images/school-books.jpg') }}"
+        class="card-img-top flex-column"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Click to select an option</h5>
+        <div>
+          <div class="row">
+            <div class="">
+              <a
+                type="button"
+                class="btn btn-primary"
+                href="{{ url_for('routes.diploma')}}"
+                style="width: 100%; margin-bottom: 2rem"
+              >
+                DIPLOMA COURSES
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="">
+              <a
+                type="button"
+                class="btn btn-danger"
+                href="{{ url_for('routes.degree')}}"
+                style="width: 100%; margin-bottom: 2rem"
+              >
+                DEGREE COURSES
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="">
+              <a
+                type="button"
+                class="btn btn-success"
+                href="{{ url_for('routes.diploma')}}"
+                style="width: 100%; margin-bottom: 2rem"
+              >
+                CERTIFICATE COURSES
+              </a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="">
+              <a
+                type="button"
+                class="btn btn-warning"
+                href="{{ url_for('routes.diploma')}}"
+                style="width: 100%; margin-bottom: 2rem"
+              >
+                KMTC
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% endblock %}
+  </div>
+</div>
+
+{% block scripts %}
+<script type="text/javascript">
+  document.getElementById("certBtn").addEventListener("click", () => {
+    alert(" ");
+  });
+</script>
+{% endblock %}

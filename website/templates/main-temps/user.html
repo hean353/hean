@@ -1,0 +1,151 @@
+{% extends "./base.html" %} {% block title %} User | Form {% endblock %} {%
+block links %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',
+filename='spinner.css')}}"
+/>
+{% endblock %} {% block displaytext %}Fill in the form then submit {% endblock
+%} {% block ref %}
+<span class="navbar-brand mb-0 h1"
+  ><a href="{{ url_for('routes.base')}}">Back to Home</a></span
+>
+{% endblock %} {% block content %}
+
+<form
+  id="paymentForm"
+  action="#"
+  method="POST"
+  class="form-group container-sm"
+  onsubmit="checkDetails"
+>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"
+      >Email address</label
+    >
+    <input
+      type="email"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="name@example.com"
+      name="email"
+      required
+    />
+  </div>
+  <div class="mb-3 close">
+    <label for="exampleFormControlInput1" class="form-label"
+      >Index Number</label
+    >
+    <input
+      type="number"
+      class="form-control"
+      id="exampleFormControlInput2"
+      placeholder="2435656455"
+      name="indexNumber"
+      required
+    />
+  </div>
+  <div class="form-check close">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="type"
+      id="flexRadioDefault1"
+      value="diploma"
+      required
+    />
+    <label class="form-check-label" for="flexRadioDefault1"> DIPLOMA </label>
+  </div>
+  <div class="form-check close">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="type"
+      id="flexRadioDefault3"
+      value="degree"
+      required
+    />
+    <label class="form-check-label" for="flexRadioDefault3"> DEGREE </label>
+  </div>
+  <div class="form-check close">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="type"
+      id="flexRadioDefault2"
+      value="cert"
+      required
+    />
+    <label class="form-check-label" for="flexRadioDefault2">
+      CERTIFICATE
+    </label>
+  </div>
+  <div class="form-check close">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="type"
+      id="flexRadioDefault4"
+      value="kmtc"
+      required
+    />
+    <label class="form-check-label" for="flexRadioDefault4"> KMTC </label>
+  </div>
+
+  <button type="submit" class="btn btn-secondary" id="subBtn">Submit</button>
+</form>
+<a
+  type="button"
+  href="#"
+  style="text-decoration: none; color: deepskyblue; text-align: center"
+  id="toggle_button"
+  >I'm an existing user, I want to try for another course category</a
+>
+
+{% endblock %} {% block scripts %}
+<script type="text/javascript">
+  let toggle_button = document.getElementById("toggle_button");
+  toggle_button.style.textShadow = "4px 4px 8px rgba(255, 255, 0, 1)";
+  toggle_button.addEventListener("click", () => {
+    closeItems = document.querySelectorAll(".close");
+
+    closeItems.forEach((item) => {
+      const inputs = item.querySelectorAll("input");
+      if (item.style.display != "none") {
+        item.style.display = "none";
+        inputs.forEach((input) => {
+          input.removeAttribute("required"); // Remove the required attribute
+          input.value = ""; // Clear the value of the input fields
+        });
+        toggle_button.innerHTML = "I'm a new user";
+        toggle_button.style.color = "orangered";
+      } else {
+        item.style.display = "block";
+        inputs.forEach((input) => input.setAttribute("required", "required")); // Add the required attribute
+        toggle_button.innerHTML =
+          "I'm an existing user, I want to try for another course category";
+        toggle_button.classList.add(".shadow-text");
+      }
+    });
+  });
+
+  document
+    .getElementById("subBtn")
+    .addEventListener(
+      "click",
+      () => console.log("You clicked the submit button!"),
+      false
+    );
+
+  function checkDetails() {
+    console.log("Checking details");
+    alert(
+      `These are the field items being submitted: ${
+        document.getElementById("exampleFormControlInput1").value
+      } indexNumber: ${
+        document.getElementById("exampleFormControlInput2").value
+      }`
+    );
+  }
+</script>
+{% endblock %}
